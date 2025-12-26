@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import net.bytebuddy.asm.MemberSubstitution.FieldValue;
 import net.datafaker.Faker;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MainPage {
     private static WebDriver driver;
     private WebDriverWait wait;
+
 
 
 
@@ -92,7 +94,7 @@ public class MainPage {
     @FindBy(xpath = "//h1[@class='h1']")
     private WebElement mainHeaderRegisterWindow;
 
-    //локатор при ошибкb рагистрации дубля ползователя
+    //локатор при ошибке регистрации дубля пользователя
     @FindBy(xpath = "//span[contains(text(),'Ошибка')]")
     private WebElement errorRegistrationMassege;
 
@@ -114,7 +116,8 @@ public void open() {
     }
 
     public void clickLoginButton() {
-        loginButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", loginButton); //клик по кнопке Войти через JS
     }
 
     public void enterEmail(String email) {

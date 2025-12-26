@@ -13,7 +13,7 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 
-
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -22,7 +22,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.github.dockerjava.transport.DockerHttpClient.Request;
 
-import ru.praktikumservices.stand.qadesk.DriverExtension;
+//import ru.praktikumservices.stand.qadesk.DriverExtension;
+import ru.praktikumservices.stand.qadesk.DriverFactory;
+//import ru.praktikumservices.stand.qadesk.TestContext;
 import ru.praktikumservices.stand.qadesk.base.BaseHttpClient;
 import ru.praktikumservices.stand.qadesk.client.ClientClient;
 import ru.praktikumservices.stand.qadesk.models.Client;
@@ -31,31 +33,39 @@ import ru.praktikumservices.stand.qadesk.pages.MainPage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
 import java.util.Map;
 
 public class LoginSteps {
 
     private WebDriver driver;
+    private WebDriverWait wait;
     private MainPage mainPage;
-    private DriverExtension driverExtension;
     private final Faker faker = new Faker();
     Client client = new Client(faker.internet().emailAddress(), faker.internet().password());
     BaseHttpClient baseHttpClient = new BaseHttpClient();
+
 
     public LoginSteps() {
     }
 
 
-
     @Before
     public void setUp() {
-        // Создаём драйвер для браузера Chrome
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-        this.driver = new org.openqa.selenium.chrome.ChromeDriver();
-        this.driver.manage().window().maximize();
+//        DriverFactory driverFactory = new DriverFactory();
+//        driverFactory.initDriver();
+//        this.driver = driverFactory.driver;
+        WebDriver driver = DriverFactory.getInstance().getDriver();
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         this.mainPage = new MainPage(driver);
+
+
     }
+//
+//    @Before
+//    public void setup() {
+//    }
+
 
     @Step("Подготовка данных теста - Регистрация юзера через API")
     @And("the user is registered via API")
@@ -95,12 +105,7 @@ public class LoginSteps {
     }
 
 
-    @After
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+
 
 
 
@@ -134,5 +139,12 @@ public class LoginSteps {
         mainPage.enterEmail(client.getEmail());
         mainPage.enterPassword(client.getPassword());
         mainPage.enterConfirmPassword(client.getPassword()); // Используем тот же пароль для подтверждения
+    }
+
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

@@ -1,31 +1,46 @@
 package ru.praktikumservices.stand.qadesk;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
+    private static DriverFactory instance;
     private WebDriver driver;
 
+    private DriverFactory() {}
 
-    public void initDriver() {
-        if ("chrome".equals(System.getProperty("browser"))) {
-            setupChrome();
+    public static synchronized DriverFactory getInstance() {
+        if (instance == null) {
+            instance = new DriverFactory();
         }
-        else {
-            setupFirefox();
-        }
+        return instance;
     }
 
-    public void setupFirefox() {
-        driver = new org.openqa.selenium.firefox.FirefoxDriver();
-        driver.manage().window().maximize();
-    }
-
-    public void setupChrome() {
-        driver = new org.openqa.selenium.chrome.ChromeDriver();
-        driver.manage().window().maximize();
-    }
     public WebDriver getDriver() {
+        if (driver == null) {
+            initDriver();
+        }
         return driver;
     }
 
+    public void initDriver() {
+        if (driver != null) {
+            return; // Избегаем пересоздания
+        }
+
+        if ("firefox".equals(System.getProperty("browser"))) {
+            driver = new FirefoxDriver();
+        } else {
+            driver = new ChromeDriver();
+        }
+        driver.manage().window().maximize();
+    }
+
+    public void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
+    }
 }
