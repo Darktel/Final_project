@@ -118,7 +118,6 @@ public class AnnouncementPage {
         PageFactory.initElements(driver, this);
     }
 
-
     public void isPageLoaded() {
         wait.until(ExpectedConditions.visibilityOf(titlePage));
         assertTrue(titlePage.getText().contains("Новое объявление"));

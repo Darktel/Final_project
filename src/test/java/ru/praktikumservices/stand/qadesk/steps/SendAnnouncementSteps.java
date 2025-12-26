@@ -50,7 +50,7 @@ public class SendAnnouncementSteps {
     public void setUp() {
 //        driverFactory.initDriver();
 //        this.driver = driverFactory.driver;
-        WebDriver driver = DriverFactory.getInstance().getDriver();
+        this.driver = DriverFactory.getInstance().getDriver();
         this.mainPage = new MainPage(driver);
         this.profilePage = new ProfilePage(driver); // Инициализация ProfilePage
         this.mainPage = new MainPage(driver);
@@ -64,7 +64,7 @@ public class SendAnnouncementSteps {
         ClientClient clientClient = new ClientClient();
         Response response = clientClient.createUserViaApi(client); // Регистрируем пользователя через API перед тестом
         tokenClient = clientClient.getToken(response);
-        driver.get(mainPage.URL);
+        mainPage.open();
         mainPage.clickLoginButton();
         mainPage.LoginClient(client);
         mainPage.isProfileVisible();
@@ -73,13 +73,12 @@ public class SendAnnouncementSteps {
 
     @Given("the user is on the announcement creation page")
     public void the_user_is_on_the_announcement_creation_page() {
-        driver.get(announcementPage.URL);
+        driver.get(AnnouncementPage.URL);
         announcementPage.isPageLoaded();
     }
 
     @When("the user fills in the announcement form:")
     public void the_user_fills_in_the_announcement_form(DataTable dataTable) {
-       JavascriptExecutor js = (JavascriptExecutor) driver;
         Map<String, String> data = dataTable.asMap();
         announcementPage.inputName.sendKeys(data.get("title"));
         announcementPage.selectCategoryButton.click();

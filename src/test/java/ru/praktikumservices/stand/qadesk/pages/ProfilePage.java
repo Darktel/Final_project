@@ -10,9 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProfilePage {
     private static WebDriver driver;
@@ -45,6 +42,10 @@ public class ProfilePage {
     //кнопка редактирования объявления
     @FindBy(xpath = "//button[@class='editButton']")
     public WebElement editAnnouncementButton;
+
+    //кнопка удаления объявления (Не существует)
+    @FindBy(xpath = "//button[@class='deleteButton']")
+    public WebElement deleteAnnouncementButton;
 
     public ProfilePage(WebDriver driver) {
         this.driver = driver;
@@ -83,5 +84,41 @@ public class ProfilePage {
         //клик по кнопке
         editAnnouncementButton.click();
 
+    }
+
+    public void clickDeleteAnnouncementButton() {
+
+        //промотать до элемента на странице editAnnouncementButton с использованием js executor
+        try {
+            Thread.sleep(500); // 3000 миллисекунд = 3 секунды
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Sleep interrupted", e);
+        }
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", deleteAnnouncementButton);
+        try {
+            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Sleep interrupted", e);
+        }
+        //ожидание появления элемента
+        wait.until(ExpectedConditions.elementToBeClickable(deleteAnnouncementButton));
+        try {
+            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Sleep interrupted", e);
+        }
+        //клик по кнопке
+        deleteAnnouncementButton.click();
+    }
+
+    public boolean isAnnouncementVisible() {
+        try {
+            return firstAnnouncementTitle.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

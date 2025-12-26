@@ -1,23 +1,16 @@
 package ru.praktikumservices.stand.qadesk.pages;
 
-import io.qameta.allure.Step;
-import net.bytebuddy.asm.MemberSubstitution.FieldValue;
-import net.datafaker.Faker;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.praktikumservices.stand.qadesk.models.Client;
 
 import java.time.Duration;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MainPage {
@@ -104,12 +97,6 @@ public class MainPage {
         PageFactory.initElements(driver, this);
     }
 
-    
-//    @Step("Переходим к профилю клиента")
-//    public void clickProfileButton(){
-//        wait.until(ExpectedConditions.elementToBeClickable(buttonProfileLink));
-//        buttonProfileLink.click();
-//    }
 
 public void open() {
         driver.get(URL);
@@ -137,20 +124,14 @@ public void open() {
 
     public String isProfileVisible() {
       wait.until(ExpectedConditions.visibilityOf(profileName));
-        String actualName = profileName.getText();
-        return actualName;
+        return profileName.getText();
     }
-
-    // @Step("Нажимаем кнопку 'Вход и регистрация'")
-    // public void clickLoginButton(){
-    //     wait.until(ExpectedConditions.visibilityOf(loginButton));
-    //     loginButton.click();
-    // }
 
     public void LoginClient(Client client) {
         wait.until(ExpectedConditions.visibilityOf(emailInput));
         emailInput.sendKeys(client.getEmail());
         passwordInput.sendKeys(client.getPassword());
+        wait.until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
 
     }
