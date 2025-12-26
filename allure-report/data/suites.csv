@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","65567","Successful editing of an announcement by an authenticated user","","2025-12-26","failed","2025-12-26","","","",""
+"","53542","Successful announcement publication by an authenticated user","","2025-12-26","passed","2025-12-26","","","",""
+"","43873","Successful deletion of an announcement by an authenticated user","","2025-12-26","broken","2025-12-26","","","",""
+"","27427","User logs in via ""Вход и регистрация"" button on the main page","","2025-12-26","passed","2025-12-26","","","",""
+"","27702","Registration failure due to existing user","","2025-12-26","passed","2025-12-26","","","",""
+"","29991","User register on the main page","","2025-12-26","passed","2025-12-26","","","",""
