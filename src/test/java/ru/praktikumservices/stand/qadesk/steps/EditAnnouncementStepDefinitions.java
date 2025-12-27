@@ -4,7 +4,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 import net.datafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import ru.praktikumservices.stand.qadesk.DriverFactory;
 import ru.praktikumservices.stand.qadesk.client.ClientAnnouncement;
@@ -57,7 +56,7 @@ public class EditAnnouncementStepDefinitions {
     public void the_user_is_authenticated() {
         ClientClient clientClient = new ClientClient();
         clientClient.createUserViaApi(client); // Регистрируем пользователя через API перед тестом
-        Response response = clientClient.LoginUserViaApi(client);
+        Response response = clientClient.loginUserViaApi(client);
         tokenClient = clientClient.getToken(response);
         isAuthenticated = true;
     }

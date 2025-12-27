@@ -60,7 +60,7 @@ public class DeleteAnnouncementSteps {
     public void userCreatesANewAccountWithValidCredentials() {
         ClientClient clientClient = new ClientClient();
         clientClient.createUserViaApi(client); // Регистрируем пользователя через API перед тестом
-        Response response = clientClient.LoginUserViaApi(client);
+        Response response = clientClient.loginUserViaApi(client);
         tokenClient = clientClient.getToken(response);
     }
 

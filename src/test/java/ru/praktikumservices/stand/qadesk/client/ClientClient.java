@@ -34,7 +34,7 @@ public class ClientClient {
         return response;
     }
 
-    public Response LoginUserViaApi(Client client) {
+    public Response loginUserViaApi(Client client) {
         String email = client.getEmail();
         String password = client.getPassword();
         return given().spec(baseHttpClient.requestSpecification)
