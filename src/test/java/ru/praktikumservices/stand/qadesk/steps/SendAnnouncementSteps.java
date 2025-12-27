@@ -38,7 +38,6 @@ public class SendAnnouncementSteps {
     private MainPage mainPage;
     private ProfilePage profilePage;
     private WebDriverWait wait;
-//    private final DriverFactory driverFactory = new DriverFactory();
     private final Faker faker = new Faker();
     private Client client;
     private boolean isAuthenticated = false;

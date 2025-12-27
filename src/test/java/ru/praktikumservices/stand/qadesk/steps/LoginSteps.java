@@ -7,34 +7,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.qameta.allure.Step;
-import io.restassured.specification.RequestSpecification;
 import net.datafaker.Faker;
-import io.restassured.response.Response;
-import static io.restassured.RestAssured.given;
 
-
-import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.github.dockerjava.transport.DockerHttpClient.Request;
-
-//import ru.praktikumservices.stand.qadesk.DriverExtension;
 import ru.praktikumservices.stand.qadesk.DriverFactory;
-//import ru.praktikumservices.stand.qadesk.TestContext;
 import ru.praktikumservices.stand.qadesk.base.BaseHttpClient;
 import ru.praktikumservices.stand.qadesk.client.ClientClient;
 import ru.praktikumservices.stand.qadesk.models.Client;
 import ru.praktikumservices.stand.qadesk.pages.MainPage;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.Duration;
-import java.util.Map;
 
 public class LoginSteps {
 

@@ -53,7 +53,7 @@ public class EditAnnouncementStepDefinitions {
     }
 
     @Given("the user is authenticated by site")
-    public void the_user_is_authenticated() {
+    public void theUserIsAuthenticated() {
         ClientClient clientClient = new ClientClient();
         clientClient.createUserViaApi(client); // Регистрируем пользователя через API перед тестом
         Response response = clientClient.loginUserViaApi(client);

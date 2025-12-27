@@ -65,7 +65,7 @@ public class DeleteAnnouncementSteps {
     }
 
     @And("is authorized user navigates to the profile page")
-    public void the_user_navigates_to_the_profile_page() {
+    public void theUserNavigatesToTheProfilePage() {
         mainPage.open();
         mainPage.clickLoginButton();
         mainPage.LoginClient(client);
@@ -92,7 +92,7 @@ public class DeleteAnnouncementSteps {
 
 
     @And("the user scrolls down to the announcement")
-    public void the_user_scrolls_down_to_the_announcement() {
+    public void theUserScrollsDownToTheAnnouncement() {
 
         wait.until(ExpectedConditions.visibilityOf(profilePage.firstAnnouncementTitle));
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -108,7 +108,7 @@ public class DeleteAnnouncementSteps {
 
     // Step: Not visible on profile
     @And("the announcement should no longer be visible on the profile page")
-    public void the_announcement_should_no_longer_be_visible_on_the_profile_page() {
+    public void theAnnouncementShouldNoLongerBeVisibleOnTheProfilePage() {
         driver.navigate().refresh();
         profilePage.open();
         //Промотать вниз страницы
