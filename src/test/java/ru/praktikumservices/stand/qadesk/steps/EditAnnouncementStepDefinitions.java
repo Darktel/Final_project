@@ -28,23 +28,18 @@ public class EditAnnouncementStepDefinitions {
     private final Faker faker = new Faker(); // Используем Faker для генерации тестовых данных
     private String tokenClient;
     private Client client  = new Client(faker.internet().emailAddress(), faker.internet().password());
-//    DriverFactory driverFactory = new DriverFactory();
     private WebDriver driver;
-//    private WebDriverWait wait;
     private MainPage mainPage;
     private ProfilePage profilePage;
     private AnnouncementPage announcementPage;
 
     @Before
     public void setUp() {
-//        driverFactory.initDriver();
-//        this.driver = driverFactory.driver;
         WebDriver driver = DriverFactory.getInstance().getDriver();
         this.mainPage = new MainPage(driver);
         this.profilePage = new ProfilePage(driver); // Инициализация ProfilePage
         this.mainPage = new MainPage(driver);
         this.announcementPage = new AnnouncementPage(driver);
-//        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         this.client = new Client(faker.internet().emailAddress(), faker.internet().password());
     }
     @Given("the user is not authenticated")

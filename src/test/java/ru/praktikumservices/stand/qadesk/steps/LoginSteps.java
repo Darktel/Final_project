@@ -31,25 +31,14 @@ public class LoginSteps {
     BaseHttpClient baseHttpClient = new BaseHttpClient();
 
 
-    public LoginSteps() {
-    }
-
-
     @Before
     public void setUp() {
-//        DriverFactory driverFactory = new DriverFactory();
-//        driverFactory.initDriver();
-//        this.driver = driverFactory.driver;
         WebDriver driver = DriverFactory.getInstance().getDriver();
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         this.mainPage = new MainPage(driver);
 
 
     }
-//
-//    @Before
-//    public void setup() {
-//    }
 
 
     @Step("Подготовка данных теста - Регистрация юзера через API")
