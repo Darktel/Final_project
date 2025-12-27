@@ -47,8 +47,6 @@ public class SendAnnouncementSteps {
 
     @Before
     public void setUp() {
-//        driverFactory.initDriver();
-//        this.driver = driverFactory.driver;
         this.driver = DriverFactory.getInstance().getDriver();
         this.mainPage = new MainPage(driver);
         this.profilePage = new ProfilePage(driver); // Инициализация ProfilePage
@@ -171,11 +169,9 @@ public class SendAnnouncementSteps {
     }
 
 
-        @After
-        public void tearDown() {
-            if (driver != null) {
-                driver.quit();
-            }
-        }
+    @After
+    public void tearDown() {
+        DriverFactory.quitDriver();
+    }
 
 }

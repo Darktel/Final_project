@@ -1,5 +1,6 @@
 package ru.praktikumservices.stand.qadesk.steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import io.restassured.response.Response;
@@ -108,6 +109,11 @@ public class EditAnnouncementStepDefinitions {
     @Then("the system should deny access and prompt for login")
     public void theSystemShouldDenyAccessAndPromptForLogin() {
 
+    }
+
+    @After
+    public void tearDown() {
+        DriverFactory.quitDriver();
     }
 
 }

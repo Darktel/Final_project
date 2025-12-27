@@ -117,8 +117,6 @@ public class LoginSteps {
 
     @After
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+        DriverFactory.quitDriver();
     }
 }

@@ -37,10 +37,10 @@ public class DriverFactory {
         driver.manage().window().maximize();
     }
 
-    public void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+    public static void quitDriver() {
+        if (instance != null) {
+            instance.driver.quit();
+            instance = null;
         }
     }
 }
