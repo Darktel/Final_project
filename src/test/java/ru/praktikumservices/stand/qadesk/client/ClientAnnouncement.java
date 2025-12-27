@@ -1,7 +1,6 @@
 package ru.praktikumservices.stand.qadesk.client;
 
 import io.restassured.response.Response;
-import ru.praktikumservices.stand.qadesk.base.BaseHttpClient;
 import ru.praktikumservices.stand.qadesk.models.Announcement;
 
 
