@@ -69,12 +69,6 @@ public class DeleteAnnouncementSteps {
         mainPage.open();
         mainPage.clickLoginButton();
         mainPage.LoginClient(client);
-        try {
-            Thread.sleep(2000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         profilePage.open();
     }
 
@@ -97,12 +91,6 @@ public class DeleteAnnouncementSteps {
         wait.until(ExpectedConditions.visibilityOf(profilePage.firstAnnouncementTitle));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", profilePage.firstAnnouncementTitle);
-        try {
-            Thread.sleep(2000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
     }
 
 
@@ -114,12 +102,6 @@ public class DeleteAnnouncementSteps {
         //Промотать вниз страницы
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        try {
-            Thread.sleep(2000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         // Проверка, что объявление больше не отображается
         assertFalse(profilePage.isAnnouncementVisible(), "Announcement should not be visible after deletion"); // Проверяет, что объявление не видно на странице профиля
     }

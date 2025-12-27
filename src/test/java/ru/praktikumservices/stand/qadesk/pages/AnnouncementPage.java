@@ -24,7 +24,7 @@ public class AnnouncementPage {
 
      //Head page
     @FindBy(xpath = "//h1[@class='hi createListing_title__IFtFs']")
-    private WebElement titlePage;
+    public WebElement titlePage;
 
     //Кнопка загрузки 1-го фото
     @FindBy(xpath = "//input[@name='img1']/parent::button")

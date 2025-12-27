@@ -99,32 +99,17 @@ public class SendAnnouncementSteps {
             case 1:
                 absolutePath = Paths.get("src/test/resources/test-data/book1.jpg").toAbsolutePath().toString();
                 uploadFile(announcementPage.UploadPhoto1, absolutePath);
-                try {
-                    Thread.sleep(3000); // 3000 миллисекунд = 3 секунды
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException("Sleep interrupted", e);
-                }
+                wait.until(ExpectedConditions.elementToBeClickable(announcementPage.buttonPublish)); // Дождаться, пока кнопка станет кликабельной
                 break;
             case 2:
                 absolutePath = Paths.get("src/test/resources/test-data/book.jpg").toAbsolutePath().toString();
                 uploadFile(announcementPage.UploadPhoto2, absolutePath);
-                try {
-                    Thread.sleep(3000); // 3000 миллисекунд = 3 секунды
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException("Sleep interrupted", e);
-                }
+                wait.until(ExpectedConditions.elementToBeClickable(announcementPage.buttonPublish)); // Дождаться, пока кнопка станет кликабельной
                 break;
             case 3:
                 absolutePath = Paths.get("src/test/resources/test-data/book3.jpg").toAbsolutePath().toString();
                 uploadFile(announcementPage.UploadPhoto3, absolutePath);
-                try {
-                    Thread.sleep(3000); // 3000 миллисекунд = 3 секунды
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    throw new RuntimeException("Sleep interrupted", e);
-                }
+                wait.until(ExpectedConditions.elementToBeClickable(announcementPage.buttonPublish)); // Дождаться, пока кнопка станет кликабельной
                 break;
         }
     }
@@ -144,17 +129,13 @@ public class SendAnnouncementSteps {
         wait.until(ExpectedConditions.elementToBeClickable(announcementPage.buttonPublish)); // Дождаться, пока кнопка станет кликабельной
         // Клик по кнопке "Publish" на странице создания объявления
         announcementPage.buttonPublish.click();
+        wait.until(ExpectedConditions.invisibilityOf(announcementPage.titlePage));
+
     }
 
     @Then("the announcement is successfully published and visible on profile page")
     public void the_announcement_is_successfully_published_and_visible_on_profile_page() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
-        wait.until(ExpectedConditions.visibilityOf(announcementPage.profileButton));
+
         announcementPage.profileButton.click();
         assertTrue(driver.getCurrentUrl().contains("/profile")); // Проверка, что пользователь перешел на страницу профиля
         //Прокручиваем страницу вниз до элемента profilePage.titleSectionAnnouncement

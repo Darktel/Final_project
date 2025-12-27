@@ -90,25 +90,9 @@ public class EditAnnouncementStepDefinitions {
     public void theAnnouncementShouldBeSuccessfullyUpdated() {
         profilePage.open();
         profilePage.clickEditAnnouncementButton();
-        try {
-            Thread.sleep(2000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         assertEquals("Harry Potter and the Deathly Hallows", announcementPage.inputName.getText(), "Name should be updated");
         assertEquals("The final book in the series", announcementPage.inputDescription.getText(), "Description should be updated");
         assertEquals(750, announcementPage.inputPrice.getText(), "Price should be updated");
-    }
-
-    @Then("the updated announcement details should be visible on the profile page")
-    public void theUpdatedAnnouncementDetailsShouldBeVisibleOnTheProfilePage() {
-
-    }
-
-    @Then("the system should deny access and prompt for login")
-    public void theSystemShouldDenyAccessAndPromptForLogin() {
-
     }
 
     @After

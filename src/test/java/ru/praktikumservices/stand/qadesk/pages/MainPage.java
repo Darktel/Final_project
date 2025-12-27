@@ -133,6 +133,7 @@ public void open() {
         passwordInput.sendKeys(client.getPassword());
         wait.until(ExpectedConditions.visibilityOf(signInButton));
         signInButton.click();
+        wait.until(ExpectedConditions.visibilityOf(profileName));
 
     }
 

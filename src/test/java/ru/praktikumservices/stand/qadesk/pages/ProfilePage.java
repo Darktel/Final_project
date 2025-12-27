@@ -60,56 +60,18 @@ public class ProfilePage {
 
     public void clickEditAnnouncementButton() {
         //промотать до элемента на странице editAnnouncementButton с использованием js executor
-        try {
-            Thread.sleep(500); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", editAnnouncementButton);
-        try {
-            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         //ожидание появления элемента
         wait.until(ExpectedConditions.elementToBeClickable(editAnnouncementButton));
-        try {
-            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
-        //клик по кнопке
         editAnnouncementButton.click();
 
     }
 
     public void clickDeleteAnnouncementButton() {
-
         //промотать до элемента на странице editAnnouncementButton с использованием js executor
-        try {
-            Thread.sleep(500); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", deleteAnnouncementButton);
-        try {
-            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         //ожидание появления элемента
         wait.until(ExpectedConditions.elementToBeClickable(deleteAnnouncementButton));
-        try {
-            Thread.sleep(1000); // 3000 миллисекунд = 3 секунды
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Sleep interrupted", e);
-        }
         //клик по кнопке
         deleteAnnouncementButton.click();
     }

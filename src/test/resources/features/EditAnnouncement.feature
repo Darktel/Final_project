@@ -9,4 +9,3 @@ Feature: Edit Announcement
       | description | "The final book in the series"    |
       | price       | 750                    |
     Then the announcement should be successfully updated
-    And the updated announcement details should be visible on the profile page
