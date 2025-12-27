@@ -8,7 +8,6 @@ import ru.praktikumservices.stand.qadesk.models.Announcement;
 import static io.restassured.RestAssured.given;
 
 public class ClientAnnouncement {
-    private BaseHttpClient baseHttpClient = new BaseHttpClient();
 
     public void createAnnouncementViaApi(Announcement announcement, String token) {
         String name = announcement.getName();
